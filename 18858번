@@ -1,72 +1,65 @@
 #include<iostream>
-
+#include<vector>
 using namespace std;
 
-#define MAX 1000
-
-int select[MAX];
 int num = 0;
 
-void DFS( int m, int n, int init);
-void print_arr(int n);
-int judge(int n);
-
+void DFS(vector<int> V,int m, int n, int init);
+int judge(vector<int> V,int n);
+void print_arr(vector<int> V,int n);
 int main()
 {
 	int n,m;
-	cin >> n >> m;
+	
+	scanf("%d %d", &n, &m);
 	if (n >= 1 && n <= 1000)
 	{
 		if (m >= 1 && m <= 100) {
-			DFS(m, n, 0);
-			cout << num % 998244353 << endl;
+			vector<int> V(n);
+			DFS(V,m, n, 0);
+			printf("%d\n",num % 998244353);
 		}
 	}
 
 	return 0;
 }
 
-void DFS(int m, int n, int init)
+void DFS(vector<int> V,int m, int n, int init)
 {
 	if (n == init)
 	{
-		num += judge(n);
+		num += judge(V,init);
+		
 		return;
 	}
-	for (int i = 1; i <= m; i++)
+	for (int i = 0; i < m; i++)
 	{
-		select[init] = i;
-		DFS(m, n, init + 1);
+		V[init] = i;
+		DFS(V, m, n, init + 1);
 	}
 }
-
-void print_arr(int n)
-{
-	for (int i = 0; i < n; i++)
-		cout << select[i] << " ";
-	cout << endl;
-}
-int judge(int n)
+int judge(vector<int> V,int n)
 {
 	if (n < 3)
-	{
-			return 1;
-	}
+		return 1;
+
 	else
 	{
 		int p = 0;
-		int left,middle,right;
 		for (int i = 0; i <= n-3; i++)
 		{
-			left = select[i];
-			middle = select[i+1];
-			right = select[i+2];
-			if (!(left < middle && middle > right))
+			if (!(V[i]< V[i + 1] && V[i + 1]> V[i + 2]))
 			{
-				//cout << left << " " << middle << " " << right << endl;
 				p++;
 			}
 		}
 		return p;
 	}
+}
+
+void print_arr(vector<int> V,int n)
+{
+	for (int k : V)
+		cout << k << " ";
+	cout << endl;
 }
