@@ -49,7 +49,7 @@ int main()
 		cout << p*p << endl;
 	}
 	*/
-	
+
 	
 	point A[] = { point(10,15),point(5,15),point(20,3),point(6,1),point(9,7),point(15,9),
 	point(8,15) ,point(20,14) ,point(17,13) ,point(16,11) ,point(7,12) ,point(10,10),
