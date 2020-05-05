@@ -1,0 +1,30 @@
+#include<iostream>
+
+using namespace std;
+
+int main()
+{
+	int A, B, C;
+	cin >> A >> B >> C;
+
+	if ((A > 0 && A <= 2100000000) && (B > 0 && B <= 2100000000) && (C > 0 && C <= 2100000000))
+	{
+		int num = 1;
+		int sum = A+B;
+		int tmp = sum - C;
+		do
+		{
+			sum += B;
+			num += 1;
+			if (tmp <= sum - (C * num))
+			{
+				num = -1;
+				break;
+			}
+			tmp = sum - (C*num);
+		} while (sum - (C * num) >= 0);
+
+		cout << num << endl;
+	}
+	return 0;
+}
