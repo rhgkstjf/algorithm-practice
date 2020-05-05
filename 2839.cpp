@@ -8,34 +8,15 @@ int main()
 	cin >> N;
 	if (N >= 3 && N <= 5000)
 	{
-		int num = -1;
-		if ((N % 5) % 3 != 0 && ((N % 3 != 0) && (N % 5 != 0)) && (((N%5)+2)%3 != 0 && N > 10))
-		{
-			cout << num << endl;
-		}
-		else if (((N % 5) + 2) % 3 == 0 && N > 10 && (N%5)/2 == 0)
-		{
-			int p = (N / 5) - 1;
-			int q = (((N % 5) + 5) / 3);
-			cout << p + q << endl;
-		}
-		else if ((N % 5) % 3 == 0) {
-			int p = N / 5;
-			int q = (N % 5) / 3;
-			cout << p + q << endl;
-		}
+		int p = N / 5;
+		if (N == 4 || N == 7)
+			cout << "-1" << endl;
 		else if (N % 5 == 0)
-		{
-			int p = N / 5;
 			cout << p << endl;
-		}
-		else if (N % 3 == 0) {
-			int p = N / 3;
-			cout << p << endl;
-		}
-		else
-			cout << num<<endl;
+		else if (N % 5 == 1 || N % 5 == 3)
+			cout << p + 1 << endl;
+		else if (N % 5 == 2 || N % 5 == 4)
+			cout << p + 2 << endl;
 	}
-
 	return 0;
 }
