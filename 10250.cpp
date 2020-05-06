@@ -5,7 +5,6 @@ int main()
 {
 	int T,H,W,N;
 	cin >> T;
-	int *n = (int*)malloc(sizeof(int)*T);
 
 	for (int k = 0; k < T; k++)
 	{
@@ -14,14 +13,13 @@ int main()
 		{
 			int i = N % H;
 			int j = N / H;
-			if (N % H == 0)
-				*(n + k) = i * 100 + ((j / W) * 10) + j;
+			if (i > 0)
+				j++;
 			else
-				*(n + k) = i * 100 + ((j / W) * 10) + ((j + 1));
+				i = H;
+			cout << (i * 100) + j << endl;
 		}
 	}
-	for (int k = 0; k < T; k++)
-		cout << *(n + k) << endl;
 
 	return 0;
 }
