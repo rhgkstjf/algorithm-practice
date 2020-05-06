@@ -7,13 +7,8 @@ int main()
 	cin >> A >> B >> V;
 	if (B >= 1 && B < A && A <= V && V <= 1000000000)
 	{
-		int i;
-		int p = 0;
-		for (i = 1;V-p > A; i++)
-		{
-			p += A - B;
-		}
-		cout << i << endl;
+		int i = (V - A) / (A - B);
+		cout << i+1 << endl;
 	}
 
 	return 0;
